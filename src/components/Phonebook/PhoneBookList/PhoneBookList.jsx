@@ -13,6 +13,10 @@ export default function PhoneBookList({ items,removeContact }) {
   )
 }
 
+PhoneBookList.defaultProps = {
+  items: []
+}
+
 
 PhoneBookList.protoTypes = {
   events: arrayOf(
