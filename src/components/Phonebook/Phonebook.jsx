@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import { useState,useEffect } from "react";
 import FormPhoneBook from "./FormPhoneBook/FormPhoneBook";
 import PhoneBookList from "./PhoneBookList/PhoneBookList";
 import BlockPhone from "./BlockPhone/BlockPhone";
@@ -8,11 +8,13 @@ import { Label,Input,Text } from "./Phonebook.styled";
 
 
 export default function Phonebook() {
-  const [contacts, setContacts] = useState(() => {
-    const value = JSON.parce(localStorage.getItem("contacts"));
-    return value ?? [];
-  });
+  const [contacts, setContacts] = useState(() =>{
+        const value = JSON.parse(localStorage.getItem("contacts"));
+        return value ?? [];
+    }
+  );
   const [filter, setFilter] = useState("");
+
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts))
@@ -34,7 +36,7 @@ export default function Phonebook() {
         ...contact
       }
       return {
-        contacts: [...prev, newContact]
+        contacts: [ ...prev,newContact]
       }
     })
     }
