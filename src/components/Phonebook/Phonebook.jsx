@@ -8,7 +8,7 @@ import { Label,Input,Text } from "./Phonebook.styled";
 
 
 export default function Phonebook() {
-  const [contacts, setContacts] = useState(() =>{
+  const [contacts, setContacts] = useState(() => {
         const value = JSON.parse(localStorage.getItem("contacts"));
         return value ?? [];
     }
@@ -18,7 +18,7 @@ export default function Phonebook() {
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts))
-  })
+  },[contacts])
 
   useEffect(() => {
     return () => {
@@ -33,21 +33,22 @@ export default function Phonebook() {
     setContacts((prev) => {
       const newContact = {
         id: nanoid(),
-        ...contact
+        ...contact,
       }
-      return {
-        contacts: [ ...prev,newContact]
-      }
+      return  [...prev,newContact]
+
     })
     }
 
     const removeContact = (id) => {
       setContacts((prev) => {
-      const newContacts = prev.contacts.filter((item) => item.id !== id);
+        const newContacts = prev.contacts.filter((item) => item.id !== id);
 
-      return newContacts
-    })
+        return newContacts
+
+      })
     }
+
 
     const handleChange = (e) => {
     const { value } = e.target;
