@@ -42,7 +42,7 @@ export default function Phonebook() {
 
     const removeContact = (id) => {
       setContacts((prev) => {
-        const newContacts = prev.contacts.filter((item) => item.id !== id);
+        const newContacts = prev.filter((item) => item.id !== id);
 
         return newContacts
 

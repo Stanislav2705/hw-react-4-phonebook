@@ -58,6 +58,7 @@ export default function FormPhoneBook({onSubmit}) {
                 name="name"
                 type="text"
                 value={state.name}
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 onChange={handleChange}
               minLength={3}
               autoComplete="off"
